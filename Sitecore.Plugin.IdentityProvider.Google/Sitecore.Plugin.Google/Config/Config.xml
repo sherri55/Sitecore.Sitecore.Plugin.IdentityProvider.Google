@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Settings>
+  <Sitecore>
+    <ExternalIdentityProviders>
+      <IdentityProviders>
+        <Google type="Sitecore.Plugin.IdentityProviders.IdentityProvider, Sitecore.Plugin.IdentityProviders">
+          <AuthenticationScheme>Google</AuthenticationScheme>
+          <DisplayName>Sign-in with Google</DisplayName>
+          <Authority>https://accounts.google.com/</Authority>
+          <CallbackPath>/</CallbackPath>
+          <Enabled>true</Enabled>
+          <ClientId>ENTER CLIENT ID</ClientId>
+          <ClientSecret>ENTER CLIENT SECRET</ClientSecret>
+
+          <ClaimsTransformations>
+
+            <ClaimsTransformation1 type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+
+              <SourceClaims>
+
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" />
+
+              </SourceClaims>
+
+              <NewClaims>
+
+                <Claim1 type="email" />
+
+              </NewClaims>
+
+            </ClaimsTransformation1 >
+
+            <ClaimsTransformation2 type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+
+              <SourceClaims>
+
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" />
+
+              </SourceClaims>
+
+              <NewClaims>
+
+                <Claim1 type="name" />
+
+              </NewClaims>
+
+            </ClaimsTransformation2>
+
+            <ClaimsTransformation3 type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+
+              <SourceClaims>
+
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/picture" />
+
+              </SourceClaims>
+
+              <NewClaims>
+
+                <Claim1 type="picture" />
+
+              </NewClaims>
+
+            </ClaimsTransformation3>
+
+
+
+            <GoogleEmailTransformation type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+
+              <SourceClaims>
+
+                <Claim1 type="http://www.sitecore.net/identity/claims/originalIssuer" value="https://accounts.google.com" />
+
+              </SourceClaims>
+
+              <NewClaims>
+
+                <Claim1 type="http://www.sitecore.net/identity/claims/isAdmin" value="true"/>
+
+              </NewClaims>
+
+            </GoogleEmailTransformation>
+
+          </ClaimsTransformations>
+
+        </Google>
+      </IdentityProviders>
+
+    </ExternalIdentityProviders>
+  </Sitecore>
+</Settings>
